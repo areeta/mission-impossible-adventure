@@ -22,7 +22,12 @@ class Run(webapp2.RequestHandler):
     def get(self): #for a get request
         template = env.get_template("templates/run.html")
         self.response.write(template.render()) #the response
-        
+
+class Accept(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/accept.html")
+        self.response.write(template.render()) #the response
+
 class Reject(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/reject.html")
@@ -32,4 +37,6 @@ app = webapp2.WSGIApplication([
     ("/", MainPage), #this maps the root url to the Main Page Handler
     ("/jumpin", JumpIn),
     ("/run", Run),
+    ("/accept", Accept),
+    ("/reject", Reject),
 ], debug=True)
