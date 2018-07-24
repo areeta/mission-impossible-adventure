@@ -33,10 +33,16 @@ class Reject(webapp2.RequestHandler):
         template = env.get_template("templates/reject.html")
         self.response.write(template.render()) #the response
 
+class Email(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/email.html")
+        self.response.write(template.render()) #the response
+
 app = webapp2.WSGIApplication([
     ("/", MainPage), #this maps the root url to the Main Page Handler
     ("/jumpin", JumpIn),
     ("/run", Run),
     ("/accept", Accept),
     ("/reject", Reject),
+    ("/email", Email),
 ], debug=True)
